@@ -3,6 +3,7 @@ import { Canvas, useFrame } from "@react-three/fiber";
 import { Stars, OrbitControls, PerspectiveCamera, Sphere } from "@react-three/drei";
 import { FaDownload } from "react-icons/fa";
 import { motion } from "framer-motion";
+import profilePic from "../assets/vrindhwan.jpeg";
 import Skills from "./Skills";
 
 // Neural Network 3D Component
@@ -82,7 +83,7 @@ const About = () => {
           <div className="flex flex-col sm:flex-row items-center sm:items-start gap-6">
             <div className="w-32 h-32 sm:w-40 sm:h-40 rounded-full overflow-hidden border-4 border-indigo-500 shadow-xl">
               <img
-                src="src\\assets\\vrindhwan.jpeg"
+                src={profilePic}
                 alt="Profile"
                 className="w-full h-full object-cover"
               />

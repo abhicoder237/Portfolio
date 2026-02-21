@@ -2,7 +2,7 @@
 import ThreeBackground from "../components/ThreeBackground";
 import { Typewriter } from "react-simple-typewriter";
 import { FaLinkedin, FaGithub } from "react-icons/fa";
-import profilePic from "../assets/profile.jpeg";
+import profilePic from "src\\assets\\Profile.jpeg";
 import { useNavigate } from "react-router-dom";
 
 const Hero = () => {

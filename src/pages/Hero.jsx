@@ -1,4 +1,4 @@
- import React from "react";
+import React from "react";
 import ThreeBackground from "../components/ThreeBackground";
 import { Typewriter } from "react-simple-typewriter";
 import { FaLinkedin, FaGithub } from "react-icons/fa";
@@ -14,24 +14,26 @@ const Hero = () => {
       <ThreeBackground />
 
       {/* Content overlay */}
-      <div className="absolute inset-0 flex flex-col md:flex-row items-center justify-center h-full px-6 md:px-28 select-none z-10 gap-24">
+      {/* Added 'overflow-y-auto' for mobile to prevent cutoff, kept 'md:flex-row' for your desktop layout */}
+      <div className="absolute inset-0 flex flex-col md:flex-row items-center justify-center h-full px-6 md:px-28 select-none z-10 gap-10 md:gap-24 overflow-y-auto md:overflow-visible">
         
         {/* Left side: Glass Profile Card */}
-        <div className="relative flex flex-col items-center md:items-start text-center md:text-left backdrop-blur-2xl bg-white/10 border border-white/20 rounded-3xl p-8 shadow-2xl shadow-indigo-500/30 animate-fade-in">
+        {/* Added 'scale-90' for small mobile to ensure it fits, kept your original desktop styling */}
+        <div className="relative flex flex-col items-center md:items-start text-center md:text-left backdrop-blur-2xl bg-white/10 border border-white/20 rounded-3xl p-6 md:p-8 shadow-2xl shadow-indigo-500/30 animate-fade-in transform scale-90 md:scale-100 mt-10 md:mt-0">
           
-          <div className="absolute -top-8 -left-8 w-64 h-64 rounded-full bg-gradient-to-tr from-indigo-500/40 via-purple-500/30 to-pink-500/20 blur-3xl animate-blob"></div>
+          <div className="absolute -top-8 -left-8 w-48 h-48 md:w-64 md:h-64 rounded-full bg-gradient-to-tr from-indigo-500/40 via-purple-500/30 to-pink-500/20 blur-3xl animate-blob"></div>
 
           <img
             src={profilePic}
             alt="Profile"
-            className="w-44 h-44 md:w-52 md:h-52 rounded-full border-4 border-white/30 shadow-xl mb-6 z-10"
+            className="w-32 h-32 md:w-52 md:h-52 rounded-full border-4 border-white/30 shadow-xl mb-6 z-10 object-cover"
           />
 
-          <h2 className="text-2xl md:text-3xl font-semibold text-white mb-2 tracking-wide z-10">
+          <h2 className="text-xl md:text-3xl font-semibold text-white mb-2 tracking-wide z-10">
             Abhishek Kumar Singh
           </h2>
 
-          <p className="text-gray-300 max-w-sm text-md md:text-lg leading-relaxed z-10">
+          <p className="text-gray-300 max-w-[280px] md:max-w-sm text-sm md:text-lg leading-relaxed z-10">
             I Build intelligent web application using MERN Stack and Machine Learning.
           </p>
 
@@ -57,9 +59,10 @@ const Hero = () => {
         </div>
 
         {/* Right side */}
-        <div className="flex-1 flex flex-col items-center md:items-start text-center md:text-left space-y-6 md:ml-16">
+        <div className="flex-1 flex flex-col items-center md:items-start text-center md:text-left space-y-4 md:space-y-6 md:ml-16 mb-10 md:mb-0">
           
-          <h1 className="text-4xl md:text-6xl font-extrabold text-white tracking-tight leading-snug">
+          {/* Adjusted text size for mobile (text-3xl) while keeping your desktop (md:text-6xl) */}
+          <h1 className="text-3xl md:text-6xl font-extrabold text-white tracking-tight leading-tight md:leading-snug">
             I am a{" "}
             <span className="text-transparent bg-clip-text bg-gradient-to-r from-indigo-500 via-purple-500 to-pink-500">
               <Typewriter
@@ -78,25 +81,25 @@ const Hero = () => {
             </span>
           </h1>
 
-          <p className="max-w-lg text-slate-400 text-md md:text-lg leading-relaxed">
+          <p className="max-w-xs md:max-w-lg text-slate-400 text-sm md:text-lg leading-relaxed">
             Full Stack Developer integrating AI & Machine Learning into Real World Projects.
           </p>
 
           {/* Buttons */}
-          <div className="mt-8 flex flex-col md:flex-row gap-6">
+          {/* flex-col for mobile, md:flex-row for your desktop */}
+          <div className="mt-4 md:mt-8 flex flex-col md:flex-row gap-4 md:gap-6 w-full md:w-auto px-10 md:px-0">
             
             <button
               onClick={() => navigate("/project")}
-              className="px-8 py-4 bg-indigo-600 hover:bg-indigo-700 text-white rounded-full font-bold transition-all transform hover:scale-105 shadow-[0_0_25px_rgba(79,70,229,0.5)]"
+              className="px-8 py-3 md:py-4 bg-indigo-600 hover:bg-indigo-700 text-white rounded-full font-bold transition-all transform hover:scale-105 shadow-[0_0_25px_rgba(79,70,229,0.5)]"
             >
               Launch Projects
             </button>
 
-            {/* Single Resume Download Button */}
             <a
               href="/resume/Abhishek_mern_stack.pdf"
               download
-              className="px-8 py-4 bg-red-600 hover:bg-red-700 text-white rounded-full font-bold transition-all transform hover:scale-105 shadow-[0_0_25px_rgba(220,38,38,0.5)] text-center"
+              className="px-8 py-3 md:py-4 bg-red-600 hover:bg-red-700 text-white rounded-full font-bold transition-all transform hover:scale-105 shadow-[0_0_25px_rgba(220,38,38,0.5)] text-center"
             >
               Download Resume
             </a>
@@ -105,15 +108,14 @@ const Hero = () => {
         </div>
       </div>
 
-      {/* Scroll indicator */}
-      <div className="absolute bottom-12 left-1/2 -translate-x-1/2 flex flex-col items-center gap-2">
+      {/* Scroll indicator - Hidden on mobile to avoid overlapping content */}
+      <div className="hidden md:flex absolute bottom-12 left-1/2 -translate-x-1/2 flex-col items-center gap-2">
         <span className="text-slate-500 text-xs uppercase tracking-widest font-mono">
           Explore Space
         </span>
         <div className="w-[1px] h-12 bg-gradient-to-b from-indigo-500 to-transparent" />
       </div>
 
-      {/* Animations */}
       <style jsx>{`
         @keyframes blob {
           0% { transform: translate(0px, 0px) scale(1); }
